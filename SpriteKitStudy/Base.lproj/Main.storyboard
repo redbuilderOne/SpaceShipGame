@@ -63,49 +63,55 @@
                                     <action selector="playButtonPressed:" destination="hgH-dJ-Tz4" eventType="touchUpInside" id="4gF-Ko-Hqa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU7-m5-FQ7">
-                                <rect key="frame" x="30" y="329" width="126" height="51"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
-                                <color key="textColor" systemColor="systemOrangeColor"/>
-                                <color key="highlightedColor" systemColor="labelColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dss-JC-Bfk">
-                                <rect key="frame" x="30" y="423" width="117" height="51"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU7-m5-FQ7">
+                                <rect key="frame" x="30" y="334" width="96.5" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <color key="highlightedColor" systemColor="labelColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltC-Br-Hbn">
-                                <rect key="frame" x="281" y="416" width="103" height="65"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="OFF">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="42"/>
-                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
-                                </buttonConfiguration>
+                                <rect key="frame" x="321" y="414" width="63" height="63"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="ON">
+                                    <color key="titleColor" systemColor="systemPinkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="musicButtonPressed:" destination="hgH-dJ-Tz4" eventType="touchUpInside" id="k8A-Ze-VaB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynE-XJ-G8X">
-                                <rect key="frame" x="281" y="322" width="103" height="65"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="OFF">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="42"/>
-                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
-                                </buttonConfiguration>
+                                <rect key="frame" x="321" y="322" width="63" height="63"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="ON">
+                                    <color key="titleColor" systemColor="systemPinkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="soundButtonPressed:" destination="hgH-dJ-Tz4" eventType="touchUpInside" id="Qb3-fP-Vvx"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dss-JC-Bfk">
+                                <rect key="frame" x="30" y="426" width="90" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <color key="highlightedColor" systemColor="labelColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Fb9-Nu-u4c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="bottom" secondItem="R07-ST-9ed" secondAttribute="bottom" constant="71" id="29v-DZ-bHh"/>
+                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="3gz-iv-BWK"/>
                             <constraint firstItem="A7e-Xl-Zf9" firstAttribute="top" secondItem="Fb9-Nu-u4c" secondAttribute="top" constant="95" id="6lH-6u-vlE"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="R07-ST-9ed" secondAttribute="trailing" constant="20" id="7FC-po-Let"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="ltC-Br-Hbn" secondAttribute="trailing" constant="30" id="AhX-cn-54b"/>
-                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="151" id="DQR-Wz-Flo"/>
+                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="156" id="CGc-Li-L2Z"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="ynE-XJ-G8X" secondAttribute="trailing" constant="30" id="KVG-yI-CnB"/>
-                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="Lh7-sU-LMK"/>
                             <constraint firstItem="ltC-Br-Hbn" firstAttribute="top" secondItem="ynE-XJ-G8X" secondAttribute="bottom" constant="29" id="Mka-dW-6bb"/>
-                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="top" secondItem="hU7-m5-FQ7" secondAttribute="bottom" constant="43" id="QXW-mx-i1f"/>
                             <constraint firstItem="ynE-XJ-G8X" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="144" id="aKv-9a-KL6"/>
-                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="h9p-GW-qg1"/>
+                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="bZ8-ub-RoV"/>
+                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="top" secondItem="hU7-m5-FQ7" secondAttribute="bottom" constant="53.5" id="duo-Ln-CFa"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="A7e-Xl-Zf9" secondAttribute="trailing" constant="20" id="oo9-fJ-z6l"/>
                             <constraint firstItem="A7e-Xl-Zf9" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="20" id="w7D-vk-mye"/>
                             <constraint firstItem="R07-ST-9ed" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="20" id="yah-c5-aO5"/>
@@ -120,11 +126,74 @@
             </objects>
             <point key="canvasLocation" x="828" y="66"/>
         </scene>
+        <!--Game Over View Controller-->
+        <scene sceneID="DYo-Jx-7mI">
+            <objects>
+                <viewController storyboardIdentifier="gameOverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8lN-IU-O0r" customClass="GameOverViewController" customModule="SpriteKitStudy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="mFT-Xk-myj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yi6-td-0VT">
+                                <rect key="frame" x="40" y="227" width="334" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDY-xd-4F6">
+                                <rect key="frame" x="40" y="286" width="334" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibi-fA-UxH">
+                                <rect key="frame" x="151" y="421" width="112" height="54"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85F-uS-Twu">
+                                <rect key="frame" x="40" y="607" width="334" height="94"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="replay"/>
+                                <connections>
+                                    <action selector="resetButton:" destination="8lN-IU-O0r" eventType="touchUpInside" id="PzE-Kx-wb1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Yz-WL-iOv"/>
+                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                        <constraints>
+                            <constraint firstItem="7Yz-WL-iOv" firstAttribute="trailing" secondItem="85F-uS-Twu" secondAttribute="trailing" constant="40" id="5ZZ-57-yK1"/>
+                            <constraint firstItem="85F-uS-Twu" firstAttribute="leading" secondItem="7Yz-WL-iOv" secondAttribute="leading" constant="40" id="5kn-6k-7OS"/>
+                            <constraint firstItem="Ibi-fA-UxH" firstAttribute="centerY" secondItem="mFT-Xk-myj" secondAttribute="centerY" id="EnX-xI-R8D"/>
+                            <constraint firstItem="UDY-xd-4F6" firstAttribute="top" secondItem="Yi6-td-0VT" secondAttribute="bottom" constant="8" id="Fk5-sf-HuK"/>
+                            <constraint firstItem="7Yz-WL-iOv" firstAttribute="trailing" secondItem="UDY-xd-4F6" secondAttribute="trailing" constant="40" id="PBM-oA-r5b"/>
+                            <constraint firstItem="7Yz-WL-iOv" firstAttribute="trailing" secondItem="Yi6-td-0VT" secondAttribute="trailing" constant="40" id="Vm2-BL-kms"/>
+                            <constraint firstItem="Ibi-fA-UxH" firstAttribute="centerX" secondItem="mFT-Xk-myj" secondAttribute="centerX" id="VzI-T4-XQ9"/>
+                            <constraint firstItem="UDY-xd-4F6" firstAttribute="leading" secondItem="7Yz-WL-iOv" secondAttribute="leading" constant="40" id="YUu-G1-oKj"/>
+                            <constraint firstItem="Yi6-td-0VT" firstAttribute="leading" secondItem="7Yz-WL-iOv" secondAttribute="leading" constant="40" id="YV9-Xe-A8J"/>
+                            <constraint firstItem="7Yz-WL-iOv" firstAttribute="bottom" secondItem="85F-uS-Twu" secondAttribute="bottom" constant="161" id="Z9B-Eb-D0N"/>
+                            <constraint firstItem="Yi6-td-0VT" firstAttribute="top" secondItem="7Yz-WL-iOv" secondAttribute="top" constant="183" id="yOQ-ui-Mud"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="Ibi-fA-UxH" id="dae-sQ-Gci"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVc-6W-QhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1637.68115942029" y="65.625"/>
+        </scene>
     </scenes>
     <resources>
         <image name="pause.circle" catalog="system" width="128" height="121"/>
+        <image name="replay" width="80" height="80"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,6 +206,9 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

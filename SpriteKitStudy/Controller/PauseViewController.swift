@@ -9,6 +9,8 @@ import UIKit
 
 protocol PauseViewControllerDelegate {
     func pauseViewControllerPlayButton(_ viewController: PauseViewController)
+    func pauseViewControllerSoundButton(_ viewController: PauseViewController)
+    func pauseViewControllerMusicButton(_ viewController: PauseViewController)
 }
 
 class PauseViewController: UIViewController {
@@ -22,12 +24,17 @@ class PauseViewController: UIViewController {
         delegate.pauseViewControllerPlayButton(self)
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.layer.opacity = 0.5
+    @IBAction func soundButtonPressed(_ sender: UIButton) {
+        delegate.pauseViewControllerSoundButton(self)
+    }
 
-
+    @IBAction func musicButtonPressed(_ sender: UIButton) {
+        delegate.pauseViewControllerMusicButton(self)
     }
 
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.layer.opacity = 0.5
+    }
 }

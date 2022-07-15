@@ -13,12 +13,15 @@ class GameViewController: UIViewController {
 
     var gameScene: GameScene!
     var pauseViewController: PauseViewController!
+    var gameOverViewController: GameOverViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         pauseViewController = storyboard?.instantiateViewController(withIdentifier: "PauseViewController") as? PauseViewController
         pauseViewController.delegate = self
+
+        gameOverViewController = storyboard?.instantiateViewController(withIdentifier: "gameOverViewController") as? GameOverViewController
 
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -44,7 +47,7 @@ class GameViewController: UIViewController {
         showPauseScreen(pauseViewController)
     }
 
-    func hidePauseScreen(_ viewController: PauseViewController) {
+    func hidePauseScreen(_ viewController: UIViewController) {
         viewController.willMove(toParent: nil)
         viewController.removeFromParent()
         gameScene.unpauseTheGame()

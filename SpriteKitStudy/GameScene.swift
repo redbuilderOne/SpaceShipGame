@@ -14,10 +14,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let spaceShipCategory: UInt32 = 0x1 << 0 // битовая маска 0
     let asteroidCategory: UInt32 = 0x1 << 1 // битовая маска 1
 
+    var gameOverViewController: GameOverViewController!
+
     let hitSoundAction1 = SKAction.playSoundFileNamed("Impact1", waitForCompletion: true)
     let beepSoundAction1 = SKAction.playSoundFileNamed("Beeps1", waitForCompletion: true)
+    let colorAction3 = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.5)
 
-    // 1. Создаем экземпляр - наш нод (корабль)
     var asteroid: Asteroid = Asteroid()
     var score = 0
     var spaceBackground: SKSpriteNode!
@@ -32,6 +34,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var musicPlayer: AVAudioPlayer!
     var musicOn = true
     var soundOn = true
+    var life = 3
+
+    var spaceShipModel: SKSpriteNode = {
+        var spaceShip = SKSpriteNode()
+        spaceShip = SKSpriteNode(imageNamed: "greySpaceShip")
+        spaceShip.xScale = 0.8
+        spaceShip.yScale = 0.8
+        spaceShip.physicsBody = SKPhysicsBody(texture: spaceShip.texture!, size: spaceShip.size) // придаем физическое тело: текстуру и вес
+        spaceShip.physicsBody?.isDynamic = false // тело не будет падать вниз
+        return spaceShip
+    }()
+
+    var heartLife1: SKSpriteNode = {
+        var heartLife = SKSpriteNode()
+        heartLife = SKSpriteNode(imageNamed: "heart")
+        heartLife.xScale = 0.3
+        heartLife.yScale = 0.3
+        return heartLife
+    }()
+
+    var heartLife2: SKSpriteNode = {
+        var heartLife = SKSpriteNode()
+        heartLife = SKSpriteNode(imageNamed: "heart")
+        heartLife.xScale = 0.3
+        heartLife.yScale = 0.3
+        return heartLife
+    }()
+
+    var heartLife3: SKSpriteNode = {
+        var heartLife = SKSpriteNode()
+        heartLife = SKSpriteNode(imageNamed: "heart")
+        heartLife.xScale = 0.3
+        heartLife.yScale = 0.3
+        return heartLife
+    }()
 
     func checkMusic() {
         if musicOn {
@@ -47,6 +84,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 0
         starsLayer.isPaused = true
         musicPlayer.pause()
+
+        checkMusic()
     }
 
     func unpauseTheGame() {
@@ -55,6 +94,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 1
         starsLayer.isPaused = false
         musicPlayer.play()
+
+        checkMusic()
     }
 
     private func resetTheGame() {
@@ -65,18 +106,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 1
     }
 
-    var spaceShipModel: SKSpriteNode = {
-        var spaceShip = SKSpriteNode()
-        spaceShip = SKSpriteNode(imageNamed: "greySpaceShip")
-        spaceShip.xScale = 0.8
-        spaceShip.yScale = 0.8
-        spaceShip.physicsBody = SKPhysicsBody(texture: spaceShip.texture!, size: spaceShip.size) // придаем физическое тело: текстуру и вес
-        spaceShip.physicsBody?.isDynamic = false // тело не будет падать вниз
-        return spaceShip
-    }()
-
     override func didMove(to view: SKView) {
         playMusic()
+
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.8)
 
@@ -84,8 +116,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         scoreLabel = SKLabelNode(text: "Score: \(score)")
         //        scoreLabel.position = CGPoint(x: frame.size.width / 2, y: frame.size.height - scoreLabel.calculateAccumulatedFrame().height - 15)
+        heartLife1.position = CGPoint(x: +25, y: -250)
+        heartLife2.position = CGPoint(x: 0, y: -250)
+        heartLife3.position = CGPoint(x: -25, y: -250)
+
+        heartLife1.zPosition = 1
+        heartLife2.zPosition = 1
+        heartLife3.zPosition = 1
 
         addChild(scoreLabel)
+        addChild(heartLife1)
+        addChild(heartLife2)
+        addChild(heartLife3)
         collisionsSet()
 
         let colorAction1 = SKAction.colorize(with: .blue, colorBlendFactor: 1, duration: 1)
@@ -175,6 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             musicPlayer.numberOfLoops = -1 // если отрицательное значение, то играет бесконечно
             musicPlayer.volume = 0.2
         }
+        checkMusic()
     }
 
     // MARK: - TOUCHESBEGAN
@@ -214,11 +257,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return TimeInterval(time)
     }
 
-    override func update(_ currentTime: TimeInterval) {
-        //        let asteroid = createAsteroid()
-        //        addChild(asteroid)
-    }
-
     override func didSimulatePhysics() { // метод вызывается после того как создается физический элемент
         asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
             let heightScreen = UIScreen.main.bounds.height // достаем высоту нашего экрана
@@ -231,19 +269,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.categoryBitMask == spaceShipCategory && contact.bodyB.categoryBitMask == asteroidCategory || contact.bodyB.categoryBitMask == spaceShipCategory && contact.bodyA.categoryBitMask == asteroidCategory {
-            self.score = 0
-            self.scoreLabel.text = "Score: \(self.score)"
-            let colorAction3 = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.5)
-            spaceShipModel.run(colorAction3)
-            print("contact didBegin")
+        print("contact didBegin")
+        //        if contact.bodyA.collisionBitMask == spaceShipCategory && contact.bodyB.categoryBitMask == asteroidCategory || contact.bodyB.categoryBitMask == spaceShipCategory && contact.bodyA.categoryBitMask == asteroidCategory {
+
+        self.score -= 1
+        self.life -= 1
+        print("life = \(self.life)")
+        self.scoreLabel.text = "Score: \(self.score)"
+
+        switch life {
+        case 2:
+            heartLife1.isHidden = true
+        case 1:
+            heartLife2.isHidden = true
+        case 0:
+            heartLife3.isHidden = true
+        default:
+            print("game over")
         }
 
-        run(hitSoundAction1)
+        asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
+            asteroid.removeFromParent()
+            self.spaceShipModel.run(self.colorAction3)
+        }
+
+        if soundOn {
+            run(hitSoundAction1)
+        }
     }
+
 
     func didEnd(_ contact: SKPhysicsContact) {
         print("contact didEnd")
-        run(beepSoundAction1)
+
+
+        //        let explosion = SKEmitterNode(fileNamed: "Explosion")
+        //        explosion?.position =
+        // https://www.youtube.com/watch?v=zyly5HhA6ao
+
+
+        if soundOn {
+            run(beepSoundAction1)
+        }
     }
 }
