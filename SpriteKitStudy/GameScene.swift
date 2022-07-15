@@ -29,9 +29,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var starsLayer: SKNode!
     var spaceShipLayer: SKNode!
 
-    var musicPlayer: AVAudioPlayer!
-    var musicOn = true
-    var soundOn = true
+    var musicSoundPlayer: MusicSoundPlayer!
+
+//    var musicPlayer: AVAudioPlayer!
+//    var musicOn = true
+//    var soundOn = true
 
     var spaceShipModel: SKSpriteNode = {
         var spaceShip = SKSpriteNode()
@@ -67,22 +69,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return heartLife
     }()
 
-    func checkMusic() {
-        if musicOn {
-            musicPlayer.play()
-        } else {
-            musicPlayer.stop()
-        }
-    }
+    
 
     func pauseTheGame() {
         gameIsPaused = true
         self.asteroidLayer.isPaused = true
         physicsWorld.speed = 0
         starsLayer.isPaused = true
-        musicPlayer.pause()
+        musicSoundPlayer.musicPlayer.pause()
 
-        checkMusic()
+        musicSoundPlayer.checkMusic()
     }
 
     func unpauseTheGame() {
@@ -90,9 +86,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.asteroidLayer.isPaused = false
         physicsWorld.speed = 1
         starsLayer.isPaused = false
-        musicPlayer.play()
+        musicSoundPlayer.musicPlayer.play()
 
-        checkMusic()
+        musicSoundPlayer.checkMusic()
     }
 
     private func resetTheGame() {
@@ -104,7 +100,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func didMove(to view: SKView) {
-        playMusic()
+        musicSoundPlayer = MusicSoundPlayer()
+        musicSoundPlayer.playMusic()
         actions = Actions()
 
         physicsWorld.contactDelegate = self
@@ -204,15 +201,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         asteroid.physicsBody?.contactTestBitMask = spaceShipCategory
     }
 
-    private func playMusic() {
-        if let musicPad = Bundle.main.url(forResource: "MainTheme", withExtension: "mp3") {
-            musicPlayer = try! AVAudioPlayer(contentsOf: musicPad, fileTypeHint: nil)
-            musicPlayer.play()
-            musicPlayer.numberOfLoops = -1 // если отрицательное значение, то играет бесконечно
-            musicPlayer.volume = 0.2
-        }
-        checkMusic()
-    }
+//    private func playMusic() {
+//        if let musicPad = Bundle.main.url(forResource: "MainTheme", withExtension: "mp3") {
+//            musicSoundPlayer.musicPlayer = try! AVAudioPlayer(contentsOf: musicPad, fileTypeHint: nil)
+//            musicSoundPlayer.musicPlayer.play()
+//            musicSoundPlayer.musicPlayer.numberOfLoops = -1 // если отрицательное значение, то играет бесконечно
+//            musicSoundPlayer.musicPlayer.volume = 0.2
+//        }
+//        checkMusic()
+//    }
 
     // MARK: - TOUCHESBEGAN
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -286,7 +283,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.spaceShipModel.run(self.actions.colorAction3)
         }
 
-        if soundOn {
+        if musicSoundPlayer.soundOn {
             run(actions.hitSoundAction1)
         }
     }
@@ -299,7 +296,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        explosion?.position =
         // https://www.youtube.com/watch?v=zyly5HhA6ao
 
-        if soundOn {
+        if musicSoundPlayer.soundOn {
             run(actions.beepSoundAction1)
         }
     }

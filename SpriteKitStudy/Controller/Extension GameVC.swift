@@ -9,16 +9,16 @@ import Foundation
 
 extension GameViewController: PauseViewControllerDelegate {
     func pauseViewControllerSoundButton(_ viewController: PauseViewController) {
-        gameScene.soundOn = !gameScene.soundOn
-        gameScene.checkMusic()
-        let text = gameScene.soundOn ? "ON" : "OFF"
+        gameScene.musicSoundPlayer.soundOn = !gameScene.musicSoundPlayer.soundOn
+        gameScene.musicSoundPlayer.checkMusic()
+        let text = gameScene.musicSoundPlayer.soundOn ? "ON" : "OFF"
         viewController.soundButton.setTitle(text, for: .normal)
     }
 
     func pauseViewControllerMusicButton(_ viewController: PauseViewController) {
-        gameScene.musicOn = !gameScene.musicOn
-        gameScene.checkMusic()
-        let text = gameScene.musicOn ? "ON" : "OFF"
+        gameScene.musicSoundPlayer.musicOn = !gameScene.musicSoundPlayer.musicOn
+        gameScene.musicSoundPlayer.checkMusic()
+        let text = gameScene.musicSoundPlayer.musicOn ? "ON" : "OFF"
         viewController.musicButton.setTitle(text, for: .normal)
     }
 
