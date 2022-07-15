@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="SpriteKitStudy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umY-Rc-DdJ">
+                                <rect key="frame" x="342" y="45" width="40" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="pause.circle" catalog="system" symbolScale="default" renderingMode="template"/>
+                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pauseButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="qVE-F6-HSF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="66"/>
+        </scene>
+        <!--Pause View Controller-->
+        <scene sceneID="h4w-lE-byC">
+            <objects>
+                <viewController storyboardIdentifier="PauseViewController" id="hgH-dJ-Tz4" customClass="PauseViewController" customModule="SpriteKitStudy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Crr-qe-4XK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME PAUSED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7e-Xl-Zf9">
+                                <rect key="frame" x="20" y="139" width="374" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R07-ST-9ed">
+                                <rect key="frame" x="20" y="738.5" width="374" height="52.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="PLAY" titleAlignment="center">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="32"/>
+                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="hgH-dJ-Tz4" eventType="touchUpInside" id="4gF-Ko-Hqa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU7-m5-FQ7">
+                                <rect key="frame" x="30" y="329" width="126" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <color key="highlightedColor" systemColor="labelColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dss-JC-Bfk">
+                                <rect key="frame" x="30" y="423" width="117" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <color key="highlightedColor" systemColor="labelColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltC-Br-Hbn">
+                                <rect key="frame" x="281" y="416" width="103" height="65"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="OFF">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="42"/>
+                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynE-XJ-G8X">
+                                <rect key="frame" x="281" y="322" width="103" height="65"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="OFF">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="42"/>
+                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fb9-Nu-u4c"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fb9-Nu-u4c" firstAttribute="bottom" secondItem="R07-ST-9ed" secondAttribute="bottom" constant="71" id="29v-DZ-bHh"/>
+                            <constraint firstItem="A7e-Xl-Zf9" firstAttribute="top" secondItem="Fb9-Nu-u4c" secondAttribute="top" constant="95" id="6lH-6u-vlE"/>
+                            <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="R07-ST-9ed" secondAttribute="trailing" constant="20" id="7FC-po-Let"/>
+                            <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="ltC-Br-Hbn" secondAttribute="trailing" constant="30" id="AhX-cn-54b"/>
+                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="151" id="DQR-Wz-Flo"/>
+                            <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="ynE-XJ-G8X" secondAttribute="trailing" constant="30" id="KVG-yI-CnB"/>
+                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="Lh7-sU-LMK"/>
+                            <constraint firstItem="ltC-Br-Hbn" firstAttribute="top" secondItem="ynE-XJ-G8X" secondAttribute="bottom" constant="29" id="Mka-dW-6bb"/>
+                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="top" secondItem="hU7-m5-FQ7" secondAttribute="bottom" constant="43" id="QXW-mx-i1f"/>
+                            <constraint firstItem="ynE-XJ-G8X" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="144" id="aKv-9a-KL6"/>
+                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="h9p-GW-qg1"/>
+                            <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="A7e-Xl-Zf9" secondAttribute="trailing" constant="20" id="oo9-fJ-z6l"/>
+                            <constraint firstItem="A7e-Xl-Zf9" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="20" id="w7D-vk-mye"/>
+                            <constraint firstItem="R07-ST-9ed" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="20" id="yah-c5-aO5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="musicButton" destination="ltC-Br-Hbn" id="Pcy-a8-bfY"/>
+                        <outlet property="soundButton" destination="ynE-XJ-G8X" id="FeD-13-uhv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1yJ-eH-Lud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="66"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pause.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
