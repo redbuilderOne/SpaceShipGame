@@ -201,16 +201,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         asteroid.physicsBody?.contactTestBitMask = spaceShipCategory
     }
 
-//    private func playMusic() {
-//        if let musicPad = Bundle.main.url(forResource: "MainTheme", withExtension: "mp3") {
-//            musicSoundPlayer.musicPlayer = try! AVAudioPlayer(contentsOf: musicPad, fileTypeHint: nil)
-//            musicSoundPlayer.musicPlayer.play()
-//            musicSoundPlayer.musicPlayer.numberOfLoops = -1 // если отрицательное значение, то играет бесконечно
-//            musicSoundPlayer.musicPlayer.volume = 0.2
-//        }
-//        checkMusic()
-//    }
-
     // MARK: - TOUCHESBEGAN
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
