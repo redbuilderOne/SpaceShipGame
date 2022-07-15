@@ -14,8 +14,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let spaceShipCategory: UInt32 = 0x1 << 0 // битовая маска 0
     let asteroidCategory: UInt32 = 0x1 << 1 // битовая маска 1
 
+    var gameOverViewController: GameOverViewController!
+
     let hitSoundAction1 = SKAction.playSoundFileNamed("Impact1", waitForCompletion: true)
     let beepSoundAction1 = SKAction.playSoundFileNamed("Beeps1", waitForCompletion: true)
+    let colorAction3 = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.5)
 
     var asteroid: Asteroid = Asteroid()
     var score = 0
@@ -31,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var musicPlayer: AVAudioPlayer!
     var musicOn = true
     var soundOn = true
+    var life = 3
 
     var spaceShipModel: SKSpriteNode = {
         var spaceShip = SKSpriteNode()
@@ -104,6 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         playMusic()
+
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.8)
 
@@ -264,20 +269,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.categoryBitMask == spaceShipCategory && contact.bodyB.categoryBitMask == asteroidCategory || contact.bodyB.categoryBitMask == spaceShipCategory && contact.bodyA.categoryBitMask == asteroidCategory {
-            self.score = 0
-            self.scoreLabel.text = "Score: \(self.score)"
-            let colorAction3 = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.5)
-            spaceShipModel.run(colorAction3)
-            print("contact didBegin")
+        print("contact didBegin")
+        //        if contact.bodyA.collisionBitMask == spaceShipCategory && contact.bodyB.categoryBitMask == asteroidCategory || contact.bodyB.categoryBitMask == spaceShipCategory && contact.bodyA.categoryBitMask == asteroidCategory {
+
+        self.score -= 1
+        self.life -= 1
+        print("life = \(self.life)")
+        self.scoreLabel.text = "Score: \(self.score)"
+
+        switch life {
+        case 2:
+            heartLife1.isHidden = true
+        case 1:
+            heartLife2.isHidden = true
+        case 0:
+            heartLife3.isHidden = true
+        default:
+            print("game over")
         }
+
+        asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
+            asteroid.removeFromParent()
+            self.spaceShipModel.run(self.colorAction3)
+        }
+
         if soundOn {
             run(hitSoundAction1)
         }
     }
 
+
     func didEnd(_ contact: SKPhysicsContact) {
         print("contact didEnd")
+
+
+        //        let explosion = SKEmitterNode(fileNamed: "Explosion")
+        //        explosion?.position =
+        // https://www.youtube.com/watch?v=zyly5HhA6ao
+
+
         if soundOn {
             run(beepSoundAction1)
         }
