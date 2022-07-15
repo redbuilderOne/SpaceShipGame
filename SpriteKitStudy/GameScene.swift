@@ -14,14 +14,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let spaceShipCategory: UInt32 = 0x1 << 0 // битовая маска 0
     let asteroidCategory: UInt32 = 0x1 << 1 // битовая маска 1
 
-    var gameOverViewController: GameOverViewController!
-
-    let hitSoundAction1 = SKAction.playSoundFileNamed("Impact1", waitForCompletion: true)
-    let beepSoundAction1 = SKAction.playSoundFileNamed("Beeps1", waitForCompletion: true)
-    let colorAction3 = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.5)
+    var actions: Actions!
 
     var asteroid: Asteroid = Asteroid()
     var score = 0
+    var life = 3
+
     var spaceBackground: SKSpriteNode!
     var scoreLabel: SKLabelNode!
 
@@ -34,7 +32,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var musicPlayer: AVAudioPlayer!
     var musicOn = true
     var soundOn = true
-    var life = 3
 
     var spaceShipModel: SKSpriteNode = {
         var spaceShip = SKSpriteNode()
@@ -108,11 +105,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         playMusic()
+        actions = Actions()
 
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.8)
-
-        scene?.size = UIScreen.main.bounds.size // регулируем размер сцены, делаем его равным размеру определенного устройства
+        scene?.size = UIScreen.main.bounds.size
 
         scoreLabel = SKLabelNode(text: "Score: \(score)")
         //        scoreLabel.position = CGPoint(x: frame.size.width / 2, y: frame.size.height - scoreLabel.calculateAccumulatedFrame().height - 15)
@@ -130,10 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(heartLife3)
         collisionsSet()
 
-        let colorAction1 = SKAction.colorize(with: .blue, colorBlendFactor: 1, duration: 1)
-        let colorAction2 = SKAction.colorize(with: .white, colorBlendFactor: 0, duration: 1)
-        let colorSequenceAnimation = SKAction.sequence([colorAction1, colorAction2])
-        let colorActionRepeat = SKAction.repeatForever(colorSequenceAnimation)
+        let colorActionRepeat = SKAction.repeatForever(actions.addSequence(actions.colorAction1, actions.colorAction2))
         spaceShipModel.run(colorActionRepeat)
 
         // addChild(spaceShipModel) // 3. Добавляем на экран
@@ -270,7 +264,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func didBegin(_ contact: SKPhysicsContact) {
         print("contact didBegin")
-        //        if contact.bodyA.collisionBitMask == spaceShipCategory && contact.bodyB.categoryBitMask == asteroidCategory || contact.bodyB.categoryBitMask == spaceShipCategory && contact.bodyA.categoryBitMask == asteroidCategory {
 
         self.score -= 1
         self.life -= 1
@@ -290,11 +283,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
             asteroid.removeFromParent()
-            self.spaceShipModel.run(self.colorAction3)
+            self.spaceShipModel.run(self.actions.colorAction3)
         }
 
         if soundOn {
-            run(hitSoundAction1)
+            run(actions.hitSoundAction1)
         }
     }
 
@@ -302,14 +295,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didEnd(_ contact: SKPhysicsContact) {
         print("contact didEnd")
 
-
         //        let explosion = SKEmitterNode(fileNamed: "Explosion")
         //        explosion?.position =
         // https://www.youtube.com/watch?v=zyly5HhA6ao
 
-
         if soundOn {
-            run(beepSoundAction1)
+            run(actions.beepSoundAction1)
         }
     }
 }

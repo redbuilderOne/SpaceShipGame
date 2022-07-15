@@ -10,7 +10,6 @@ import SpriteKit
 import GameplayKit
 
 class Asteroid: SKSpriteNode {
-    let asteroidCategory: UInt32 = 0x1 << 1 // битовая маска 1
 
     func createAsteroid() -> SKSpriteNode {
         let asteroid = SKSpriteNode(imageNamed: "asteroid")
@@ -21,9 +20,9 @@ class Asteroid: SKSpriteNode {
         asteroid.xScale = randomScale
         asteroid.yScale = randomScale
         asteroid.name = "asteroid"
-
         asteroid.physicsBody = SKPhysicsBody(texture: asteroid.texture!, size: asteroid.size)
-
         return asteroid
     }
+
+    
 }
