@@ -63,49 +63,55 @@
                                     <action selector="playButtonPressed:" destination="hgH-dJ-Tz4" eventType="touchUpInside" id="4gF-Ko-Hqa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU7-m5-FQ7">
-                                <rect key="frame" x="30" y="329" width="126" height="51"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
-                                <color key="textColor" systemColor="systemOrangeColor"/>
-                                <color key="highlightedColor" systemColor="labelColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dss-JC-Bfk">
-                                <rect key="frame" x="30" y="423" width="117" height="51"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU7-m5-FQ7">
+                                <rect key="frame" x="30" y="334" width="96.5" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <color key="highlightedColor" systemColor="labelColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltC-Br-Hbn">
-                                <rect key="frame" x="281" y="416" width="103" height="65"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="OFF">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="42"/>
-                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
-                                </buttonConfiguration>
+                                <rect key="frame" x="321" y="414" width="63" height="63"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="ON">
+                                    <color key="titleColor" systemColor="systemPinkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="musicButtonPressed:" destination="hgH-dJ-Tz4" eventType="touchUpInside" id="k8A-Ze-VaB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynE-XJ-G8X">
-                                <rect key="frame" x="281" y="322" width="103" height="65"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="OFF">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="42"/>
-                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
-                                </buttonConfiguration>
+                                <rect key="frame" x="321" y="322" width="63" height="63"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="ON">
+                                    <color key="titleColor" systemColor="systemPinkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="soundButtonPressed:" destination="hgH-dJ-Tz4" eventType="touchUpInside" id="Qb3-fP-Vvx"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dss-JC-Bfk">
+                                <rect key="frame" x="30" y="426" width="90" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <color key="highlightedColor" systemColor="labelColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Fb9-Nu-u4c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="bottom" secondItem="R07-ST-9ed" secondAttribute="bottom" constant="71" id="29v-DZ-bHh"/>
+                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="3gz-iv-BWK"/>
                             <constraint firstItem="A7e-Xl-Zf9" firstAttribute="top" secondItem="Fb9-Nu-u4c" secondAttribute="top" constant="95" id="6lH-6u-vlE"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="R07-ST-9ed" secondAttribute="trailing" constant="20" id="7FC-po-Let"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="ltC-Br-Hbn" secondAttribute="trailing" constant="30" id="AhX-cn-54b"/>
-                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="151" id="DQR-Wz-Flo"/>
+                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="156" id="CGc-Li-L2Z"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="ynE-XJ-G8X" secondAttribute="trailing" constant="30" id="KVG-yI-CnB"/>
-                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="Lh7-sU-LMK"/>
                             <constraint firstItem="ltC-Br-Hbn" firstAttribute="top" secondItem="ynE-XJ-G8X" secondAttribute="bottom" constant="29" id="Mka-dW-6bb"/>
-                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="top" secondItem="hU7-m5-FQ7" secondAttribute="bottom" constant="43" id="QXW-mx-i1f"/>
                             <constraint firstItem="ynE-XJ-G8X" firstAttribute="top" secondItem="A7e-Xl-Zf9" secondAttribute="bottom" constant="144" id="aKv-9a-KL6"/>
-                            <constraint firstItem="hU7-m5-FQ7" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="h9p-GW-qg1"/>
+                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="30" id="bZ8-ub-RoV"/>
+                            <constraint firstItem="Dss-JC-Bfk" firstAttribute="top" secondItem="hU7-m5-FQ7" secondAttribute="bottom" constant="53.5" id="duo-Ln-CFa"/>
                             <constraint firstItem="Fb9-Nu-u4c" firstAttribute="trailing" secondItem="A7e-Xl-Zf9" secondAttribute="trailing" constant="20" id="oo9-fJ-z6l"/>
                             <constraint firstItem="A7e-Xl-Zf9" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="20" id="w7D-vk-mye"/>
                             <constraint firstItem="R07-ST-9ed" firstAttribute="leading" secondItem="Fb9-Nu-u4c" secondAttribute="leading" constant="20" id="yah-c5-aO5"/>

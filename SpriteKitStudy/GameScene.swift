@@ -47,6 +47,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 0
         starsLayer.isPaused = true
         musicPlayer.pause()
+
+        checkMusic()
     }
 
     func unpauseTheGame() {
@@ -55,6 +57,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 1
         starsLayer.isPaused = false
         musicPlayer.play()
+
+        checkMusic()
     }
 
     private func resetTheGame() {
@@ -175,6 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             musicPlayer.numberOfLoops = -1 // если отрицательное значение, то играет бесконечно
             musicPlayer.volume = 0.2
         }
+        checkMusic()
     }
 
     // MARK: - TOUCHESBEGAN
@@ -214,11 +219,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return TimeInterval(time)
     }
 
-    override func update(_ currentTime: TimeInterval) {
-        //        let asteroid = createAsteroid()
-        //        addChild(asteroid)
-    }
-
     override func didSimulatePhysics() { // метод вызывается после того как создается физический элемент
         asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
             let heightScreen = UIScreen.main.bounds.height // достаем высоту нашего экрана
@@ -238,12 +238,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spaceShipModel.run(colorAction3)
             print("contact didBegin")
         }
-
-        run(hitSoundAction1)
+        if soundOn {
+            run(hitSoundAction1)
+        }
     }
 
     func didEnd(_ contact: SKPhysicsContact) {
         print("contact didEnd")
-        run(beepSoundAction1)
+        if soundOn {
+            run(beepSoundAction1)
+        }
     }
 }
