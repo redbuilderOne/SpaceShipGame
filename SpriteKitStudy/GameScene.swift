@@ -17,7 +17,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let hitSoundAction1 = SKAction.playSoundFileNamed("Impact1", waitForCompletion: true)
     let beepSoundAction1 = SKAction.playSoundFileNamed("Beeps1", waitForCompletion: true)
 
-    // 1. Создаем экземпляр - наш нод (корабль)
     var asteroid: Asteroid = Asteroid()
     var score = 0
     var spaceBackground: SKSpriteNode!
@@ -32,6 +31,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var musicPlayer: AVAudioPlayer!
     var musicOn = true
     var soundOn = true
+
+    var spaceShipModel: SKSpriteNode = {
+        var spaceShip = SKSpriteNode()
+        spaceShip = SKSpriteNode(imageNamed: "greySpaceShip")
+        spaceShip.xScale = 0.8
+        spaceShip.yScale = 0.8
+        spaceShip.physicsBody = SKPhysicsBody(texture: spaceShip.texture!, size: spaceShip.size) // придаем физическое тело: текстуру и вес
+        spaceShip.physicsBody?.isDynamic = false // тело не будет падать вниз
+        return spaceShip
+    }()
+
+    var heartLife1: SKSpriteNode = {
+        var heartLife = SKSpriteNode()
+        heartLife = SKSpriteNode(imageNamed: "heart")
+        heartLife.xScale = 0.3
+        heartLife.yScale = 0.3
+        return heartLife
+    }()
+
+    var heartLife2: SKSpriteNode = {
+        var heartLife = SKSpriteNode()
+        heartLife = SKSpriteNode(imageNamed: "heart")
+        heartLife.xScale = 0.3
+        heartLife.yScale = 0.3
+        return heartLife
+    }()
+
+    var heartLife3: SKSpriteNode = {
+        var heartLife = SKSpriteNode()
+        heartLife = SKSpriteNode(imageNamed: "heart")
+        heartLife.xScale = 0.3
+        heartLife.yScale = 0.3
+        return heartLife
+    }()
 
     func checkMusic() {
         if musicOn {
@@ -69,16 +102,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 1
     }
 
-    var spaceShipModel: SKSpriteNode = {
-        var spaceShip = SKSpriteNode()
-        spaceShip = SKSpriteNode(imageNamed: "greySpaceShip")
-        spaceShip.xScale = 0.8
-        spaceShip.yScale = 0.8
-        spaceShip.physicsBody = SKPhysicsBody(texture: spaceShip.texture!, size: spaceShip.size) // придаем физическое тело: текстуру и вес
-        spaceShip.physicsBody?.isDynamic = false // тело не будет падать вниз
-        return spaceShip
-    }()
-
     override func didMove(to view: SKView) {
         playMusic()
         physicsWorld.contactDelegate = self
@@ -88,8 +111,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         scoreLabel = SKLabelNode(text: "Score: \(score)")
         //        scoreLabel.position = CGPoint(x: frame.size.width / 2, y: frame.size.height - scoreLabel.calculateAccumulatedFrame().height - 15)
+        heartLife1.position = CGPoint(x: +25, y: -250)
+        heartLife2.position = CGPoint(x: 0, y: -250)
+        heartLife3.position = CGPoint(x: -25, y: -250)
+
+        heartLife1.zPosition = 1
+        heartLife2.zPosition = 1
+        heartLife3.zPosition = 1
 
         addChild(scoreLabel)
+        addChild(heartLife1)
+        addChild(heartLife2)
+        addChild(heartLife3)
         collisionsSet()
 
         let colorAction1 = SKAction.colorize(with: .blue, colorBlendFactor: 1, duration: 1)
