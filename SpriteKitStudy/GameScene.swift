@@ -60,6 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func didMove(to view: SKView) {
+        collisionsSet()
         musicSoundPlayer = MusicSoundPlayer()
         musicSoundPlayer.playMusic()
         actions = Actions()
@@ -69,41 +70,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene?.size = UIScreen.main.bounds.size
 
         scoreLabel = SKLabelNode(text: "Score: \(score)")
-        //        scoreLabel.position = CGPoint(x: frame.size.width / 2, y: frame.size.height - scoreLabel.calculateAccumulatedFrame().height - 15)
+
         spriteNodes.heartLife1.position = CGPoint(x: +25, y: -250)
         spriteNodes.heartLife2.position = CGPoint(x: 0, y: -250)
         spriteNodes.heartLife3.position = CGPoint(x: -25, y: -250)
 
-        spriteNodes.heartLife1.zPosition = 1
-        spriteNodes.heartLife2.zPosition = 1
-        spriteNodes.heartLife3.zPosition = 1
-
-        addChild(scoreLabel)
-        addChild(spriteNodes.heartLife1)
-        addChild(spriteNodes.heartLife2)
-        addChild(spriteNodes.heartLife3)
-        collisionsSet()
-
         let colorActionRepeat = SKAction.repeatForever(actions.addSequence(actions.colorAction1, actions.colorAction2))
         spriteNodes.spaceShipModel.run(colorActionRepeat)
 
-        // addChild(spaceShipModel) // 3. Добавляем на экран
-
-        // слой для корабля и огня
         spaceShipLayer = SKNode()
-        spaceShipLayer.addChild(spriteNodes.spaceShipModel)
-        spaceShipLayer.zPosition = 3
-        spriteNodes.spaceShipModel.zPosition = 1
         spaceShipLayer.position = CGPoint(x: frame.midX, y: frame.height / 4)
-        addChild(spaceShipLayer)
 
-        // создаем огонь
         guard let firePath = Bundle.main.path(forResource: "Fire", ofType: "sks") else { return }
         guard let fireEmitter = NSKeyedUnarchiver.unarchiveObject(withFile: firePath) as? SKEmitterNode else { return }
-        fireEmitter.zPosition = 0
         fireEmitter.position.y = -40
         fireEmitter.targetNode = self // шлейф
-        spaceShipLayer.addChild(fireEmitter)
 
         let asteroidCreate = SKAction.run {
             let asteroid = self.asteroid.createAsteroid()
@@ -117,8 +98,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         asteroidLayer = SKNode()
-        asteroidLayer.zPosition = 2
-        addChild(asteroidLayer)
 
         let asteroidsPerSecond: Double = 2
         let asteroidCreationDelay = SKAction.wait(forDuration: 1.0 / asteroidsPerSecond, withRange: 0.5)
@@ -130,26 +109,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceBackground = SKSpriteNode(imageNamed: "spaceBackground")
         spaceBackground.size = CGSize(width: frame.size.width + 50, height: frame.size.height + 50)
 
-        addChild(spaceBackground)
-
         // stars
         guard let starsPath = Bundle.main.path(forResource: "Stars", ofType: "sks") else { return }// sks - расширение Stars.sks
         guard let starsEmitter = NSKeyedUnarchiver.unarchiveObject(withFile: starsPath) as? SKEmitterNode else { return }
 
-        starsEmitter.zPosition = 1
         starsEmitter.position = CGPoint(x: frame.midX, y: frame.height / 2) // по x - середина
         starsEmitter.particlePositionRange.dx = frame.width
         starsEmitter.advanceSimulationTime(10)
 
         starsLayer = SKNode()
-        starsLayer?.zPosition = 1
-        addChild(starsLayer)
 
+        // addChild
+        addChild(spaceBackground)
+        addChild(scoreLabel)
+        addChild(spriteNodes.heartLife1)
+        addChild(spriteNodes.heartLife2)
+        addChild(spriteNodes.heartLife3)
+        spaceShipLayer.addChild(spriteNodes.spaceShipModel)
+        addChild(spaceShipLayer)
+        spaceShipLayer.addChild(fireEmitter)
+        addChild(asteroidLayer)
+        addChild(starsLayer)
         starsLayer.addChild(starsEmitter)
 
         // порядок загрузки
         spaceBackground.zPosition = 0
+        fireEmitter.zPosition = 0
+        starsEmitter.zPosition = 1
+        starsLayer?.zPosition = 1
+        spriteNodes.spaceShipModel.zPosition = 1
+        spriteNodes.heartLife1.zPosition = 1
+        spriteNodes.heartLife2.zPosition = 1
+        spriteNodes.heartLife3.zPosition = 1
+        asteroidLayer.zPosition = 2
         scoreLabel.zPosition = 3
+        spaceShipLayer.zPosition = 3
     }
 
     private func collisionsSet() {
