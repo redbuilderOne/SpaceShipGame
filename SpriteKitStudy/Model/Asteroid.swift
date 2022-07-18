@@ -23,6 +23,4 @@ class Asteroid: SKSpriteNode {
         asteroid.physicsBody = SKPhysicsBody(texture: asteroid.texture!, size: asteroid.size)
         return asteroid
     }
-
-    
 }

@@ -30,6 +30,8 @@
 		FF668753287EF7D70035527B /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF668752287EF7D70035527B /* Stars.sks */; };
 		FFF46A88288587CA0003FAE2 /* ShapeExplodes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFF46A86288587CA0003FAE2 /* ShapeExplodes.sks */; };
 		FFF46A89288587CA0003FAE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF46A87288587CA0003FAE2 /* Assets.xcassets */; };
+		FFF46A8B2885938C0003FAE2 /* GameScene (EXT).swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF46A8A2885938C0003FAE2 /* GameScene (EXT).swift */; };
+		FFF46A8D288594730003FAE2 /* SpriteNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF46A8C288594730003FAE2 /* SpriteNodes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		FF668752287EF7D70035527B /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
 		FFF46A86288587CA0003FAE2 /* ShapeExplodes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShapeExplodes.sks; sourceTree = "<group>"; };
 		FFF46A87288587CA0003FAE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFF46A8A2885938C0003FAE2 /* GameScene (EXT).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene (EXT).swift"; sourceTree = "<group>"; };
+		FFF46A8C288594730003FAE2 /* SpriteNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteNodes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 			children = (
 				FF66873A287C3C490035527B /* Main.storyboard */,
 				FF668736287C3C490035527B /* GameScene.swift */,
+				FFF46A8A2885938C0003FAE2 /* GameScene (EXT).swift */,
 				FF66873D287C3C4B0035527B /* Assets.xcassets */,
 				FFF46A85288587590003FAE2 /* App */,
 				FF3A2B0F28805A8400D6E8EA /* Controller */,
@@ -141,6 +146,7 @@
 				FF66874C287C5CA20035527B /* Asteroid.swift */,
 				FF66874E287C5E520035527B /* ScoreLabel.swift */,
 				FF3A2B1E2881B8B600D6E8EA /* MusicSoundPlayer.swift */,
+				FFF46A8C288594730003FAE2 /* SpriteNodes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF46A8D288594730003FAE2 /* SpriteNodes.swift in Sources */,
 				FF668737287C3C490035527B /* GameScene.swift in Sources */,
 				FF66874F287C5E520035527B /* ScoreLabel.swift in Sources */,
 				FF3A2B08288051E400D6E8EA /* Extension GameVC.swift in Sources */,
@@ -245,6 +252,7 @@
 				FF668731287C3C490035527B /* AppDelegate.swift in Sources */,
 				FF3A2B1B2881B68500D6E8EA /* Actions.swift in Sources */,
 				FF66874D287C5CA20035527B /* Asteroid.swift in Sources */,
+				FFF46A8B2885938C0003FAE2 /* GameScene (EXT).swift in Sources */,
 				FF3A2B1F2881B8B600D6E8EA /* MusicSoundPlayer.swift in Sources */,
 				FF3A2B0628804B0000D6E8EA /* PauseViewController.swift in Sources */,
 			);

@@ -20,6 +20,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     var life = 3
 
+    let spriteNodes: SpriteNodes = SpriteNodes()
+
     var spaceBackground: SKSpriteNode!
     var scoreLabel: SKLabelNode!
 
@@ -31,53 +33,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var musicSoundPlayer: MusicSoundPlayer!
 
-    //    var musicPlayer: AVAudioPlayer!
-    //    var musicOn = true
-    //    var soundOn = true
-
-    var spaceShipModel: SKSpriteNode = {
-        var spaceShip = SKSpriteNode()
-        spaceShip = SKSpriteNode(imageNamed: "greySpaceShip")
-        spaceShip.xScale = 0.8
-        spaceShip.yScale = 0.8
-        spaceShip.physicsBody = SKPhysicsBody(texture: spaceShip.texture!, size: spaceShip.size) // придаем физическое тело: текстуру и вес
-        spaceShip.physicsBody?.isDynamic = false // тело не будет падать вниз
-        return spaceShip
-    }()
-
-    var heartLife1: SKSpriteNode = {
-        var heartLife = SKSpriteNode()
-        heartLife = SKSpriteNode(imageNamed: "heart")
-        heartLife.xScale = 0.3
-        heartLife.yScale = 0.3
-        return heartLife
-    }()
-
-    var heartLife2: SKSpriteNode = {
-        var heartLife = SKSpriteNode()
-        heartLife = SKSpriteNode(imageNamed: "heart")
-        heartLife.xScale = 0.3
-        heartLife.yScale = 0.3
-        return heartLife
-    }()
-
-    var heartLife3: SKSpriteNode = {
-        var heartLife = SKSpriteNode()
-        heartLife = SKSpriteNode(imageNamed: "heart")
-        heartLife.xScale = 0.3
-        heartLife.yScale = 0.3
-        return heartLife
-    }()
-
-    
-
     func pauseTheGame() {
         gameIsPaused = true
         self.asteroidLayer.isPaused = true
         physicsWorld.speed = 0
         starsLayer.isPaused = true
         musicSoundPlayer.musicPlayer.pause()
-
         musicSoundPlayer.checkMusic()
     }
 
@@ -87,7 +48,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 1
         starsLayer.isPaused = false
         musicSoundPlayer.musicPlayer.play()
-
         musicSoundPlayer.checkMusic()
     }
 
@@ -110,30 +70,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         scoreLabel = SKLabelNode(text: "Score: \(score)")
         //        scoreLabel.position = CGPoint(x: frame.size.width / 2, y: frame.size.height - scoreLabel.calculateAccumulatedFrame().height - 15)
-        heartLife1.position = CGPoint(x: +25, y: -250)
-        heartLife2.position = CGPoint(x: 0, y: -250)
-        heartLife3.position = CGPoint(x: -25, y: -250)
+        spriteNodes.heartLife1.position = CGPoint(x: +25, y: -250)
+        spriteNodes.heartLife2.position = CGPoint(x: 0, y: -250)
+        spriteNodes.heartLife3.position = CGPoint(x: -25, y: -250)
 
-        heartLife1.zPosition = 1
-        heartLife2.zPosition = 1
-        heartLife3.zPosition = 1
+        spriteNodes.heartLife1.zPosition = 1
+        spriteNodes.heartLife2.zPosition = 1
+        spriteNodes.heartLife3.zPosition = 1
 
         addChild(scoreLabel)
-        addChild(heartLife1)
-        addChild(heartLife2)
-        addChild(heartLife3)
+        addChild(spriteNodes.heartLife1)
+        addChild(spriteNodes.heartLife2)
+        addChild(spriteNodes.heartLife3)
         collisionsSet()
 
         let colorActionRepeat = SKAction.repeatForever(actions.addSequence(actions.colorAction1, actions.colorAction2))
-        spaceShipModel.run(colorActionRepeat)
+        spriteNodes.spaceShipModel.run(colorActionRepeat)
 
         // addChild(spaceShipModel) // 3. Добавляем на экран
 
         // слой для корабля и огня
         spaceShipLayer = SKNode()
-        spaceShipLayer.addChild(spaceShipModel)
+        spaceShipLayer.addChild(spriteNodes.spaceShipModel)
         spaceShipLayer.zPosition = 3
-        spaceShipModel.zPosition = 1
+        spriteNodes.spaceShipModel.zPosition = 1
         spaceShipLayer.position = CGPoint(x: frame.midX, y: frame.height / 4)
         addChild(spaceShipLayer)
 
@@ -193,9 +153,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func collisionsSet() {
-        spaceShipModel.physicsBody?.categoryBitMask = spaceShipCategory
-        spaceShipModel.physicsBody?.collisionBitMask = asteroidCategory
-        spaceShipModel.physicsBody?.contactTestBitMask = asteroidCategory // регистрируем столкновение
+        spriteNodes.spaceShipModel.physicsBody?.categoryBitMask = spaceShipCategory
+        spriteNodes.spaceShipModel.physicsBody?.collisionBitMask = asteroidCategory
+        spriteNodes.spaceShipModel.physicsBody?.contactTestBitMask = asteroidCategory // регистрируем столкновение
         asteroid.physicsBody?.categoryBitMask = asteroidCategory
         asteroid.physicsBody?.collisionBitMask = spaceShipCategory | asteroidCategory // с кем сталкиваемся
         asteroid.physicsBody?.contactTestBitMask = spaceShipCategory
@@ -209,7 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let touchLocation = touch.location(in: self)
                 print("touchLocation = \(touchLocation)")
 
-                let distance = distanceCalculate(a: spaceShipModel.position, b: touchLocation) // определяем дистанцию
+                let distance = distanceCalculate(a: spriteNodes.spaceShipModel.position, b: touchLocation) // определяем дистанцию
                 let speed: CGFloat = 400
                 let time = timeToTravelDistance(distance: distance, speed: speed)
 
@@ -228,16 +188,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    // MARK: Distance Calculate
-    private func distanceCalculate(a: CGPoint, b: CGPoint) -> CGFloat {
-        return sqrt((b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y)) // теорема пифагора
-    }
-
-    private func timeToTravelDistance(distance: CGFloat, speed: CGFloat) -> TimeInterval {
-        let time = distance / speed
-        return TimeInterval(time)
-    }
-
     override func didSimulatePhysics() { // метод вызывается после того как создается физический элемент
         asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
             let heightScreen = UIScreen.main.bounds.height // достаем высоту нашего экрана
@@ -249,61 +199,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    private func explosion(position: CGPoint) {
-        guard let explosion = SKEmitterNode.init(fileNamed: "ShapeExplodes") else { return }
-
-        explosion.position = position
-
-        let explodeAction = SKAction.run({
-            self.addChild(explosion)
-        })
-
-        let wait = SKAction.wait(forDuration: 0.2)
-
-        let removeExplodeAction = SKAction.run({
-            explosion.removeFromParent()
-        })
-        let explodeSequence = SKAction.sequence([explodeAction, wait, removeExplodeAction])
-
-        self.run(explodeSequence)
-
-    }
-
     func didBegin(_ contact: SKPhysicsContact) {
         print("contact didBegin")
 
         let contactLocation = contact.contactPoint
-        explosion(position: contactLocation)
-
+        explosionHappened(position: contactLocation)
 
         print("contact \(contact)")
 
         self.score -= 1
+        if self.score < 0 {
+            self.score = 0
+        }
+
         self.life -= 1
+
+        asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
+            asteroid.removeFromParent()
+            self.spriteNodes.spaceShipModel.run(self.actions.colorAction3)
+        }
+
         print("life = \(self.life)")
         self.scoreLabel.text = "Score: \(self.score)"
 
         switch life {
         case 2:
-            heartLife1.isHidden = true
+            spriteNodes.heartLife1.isHidden = true
         case 1:
-            heartLife2.isHidden = true
+            spriteNodes.heartLife2.isHidden = true
         case 0:
-            heartLife3.isHidden = true
+            spriteNodes.heartLife3.isHidden = true
         default:
             print("game over")
-        }
-
-        asteroidLayer.enumerateChildNodes(withName: "asteroid") { (asteroid, stop) in
-            asteroid.removeFromParent()
-            self.spaceShipModel.run(self.actions.colorAction3)
         }
 
         if musicSoundPlayer.soundOn {
             run(actions.hitSoundAction1)
         }
     }
-
 
     func didEnd(_ contact: SKPhysicsContact) {
         print("contact didEnd")
