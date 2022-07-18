@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF3A2B042880467900D6E8EA /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF3A2B032880467900D6E8EA /* Fire.sks */; };
 		FF3A2B0628804B0000D6E8EA /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A2B0528804B0000D6E8EA /* PauseViewController.swift */; };
-		FF3A2B08288051E400D6E8EA /* Extension GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A2B07288051E400D6E8EA /* Extension GameVC.swift */; };
+		FF3A2B08288051E400D6E8EA /* GameViewController (EXT).swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A2B07288051E400D6E8EA /* GameViewController (EXT).swift */; };
 		FF3A2B0B28805A3200D6E8EA /* Impact2.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF3A2B0928805A3200D6E8EA /* Impact2.wav */; };
 		FF3A2B1128805B2F00D6E8EA /* Beeps1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF3A2B1028805B2F00D6E8EA /* Beeps1.wav */; };
 		FF3A2B1328805D7C00D6E8EA /* Impact1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF3A2B1228805D7C00D6E8EA /* Impact1.wav */; };
@@ -32,12 +32,13 @@
 		FFF46A89288587CA0003FAE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF46A87288587CA0003FAE2 /* Assets.xcassets */; };
 		FFF46A8B2885938C0003FAE2 /* GameScene (EXT).swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF46A8A2885938C0003FAE2 /* GameScene (EXT).swift */; };
 		FFF46A8D288594730003FAE2 /* SpriteNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF46A8C288594730003FAE2 /* SpriteNodes.swift */; };
+		FFF46A8F28859B9D0003FAE2 /* GameOverChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF46A8E28859B9D0003FAE2 /* GameOverChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FF3A2B032880467900D6E8EA /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 		FF3A2B0528804B0000D6E8EA /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
-		FF3A2B07288051E400D6E8EA /* Extension GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension GameVC.swift"; sourceTree = "<group>"; };
+		FF3A2B07288051E400D6E8EA /* GameViewController (EXT).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController (EXT).swift"; sourceTree = "<group>"; };
 		FF3A2B0928805A3200D6E8EA /* Impact2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Impact2.wav; sourceTree = "<group>"; };
 		FF3A2B1028805B2F00D6E8EA /* Beeps1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Beeps1.wav; sourceTree = "<group>"; };
 		FF3A2B1228805D7C00D6E8EA /* Impact1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Impact1.wav; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		FFF46A87288587CA0003FAE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF46A8A2885938C0003FAE2 /* GameScene (EXT).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene (EXT).swift"; sourceTree = "<group>"; };
 		FFF46A8C288594730003FAE2 /* SpriteNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteNodes.swift; sourceTree = "<group>"; };
+		FFF46A8E28859B9D0003FAE2 /* GameOverChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,9 @@
 		FF3A2B0F28805A8400D6E8EA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FF3A2B0528804B0000D6E8EA /* PauseViewController.swift */,
 				FF668738287C3C490035527B /* GameViewController.swift */,
-				FF3A2B07288051E400D6E8EA /* Extension GameVC.swift */,
+				FF3A2B07288051E400D6E8EA /* GameViewController (EXT).swift */,
+				FF3A2B0528804B0000D6E8EA /* PauseViewController.swift */,
 				FF3A2B1628819E2C00D6E8EA /* GameOverViewController.swift */,
 			);
 			path = Controller;
@@ -147,6 +149,7 @@
 				FF66874E287C5E520035527B /* ScoreLabel.swift */,
 				FF3A2B1E2881B8B600D6E8EA /* MusicSoundPlayer.swift */,
 				FFF46A8C288594730003FAE2 /* SpriteNodes.swift */,
+				FFF46A8E28859B9D0003FAE2 /* GameOverChecker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,7 +249,8 @@
 				FFF46A8D288594730003FAE2 /* SpriteNodes.swift in Sources */,
 				FF668737287C3C490035527B /* GameScene.swift in Sources */,
 				FF66874F287C5E520035527B /* ScoreLabel.swift in Sources */,
-				FF3A2B08288051E400D6E8EA /* Extension GameVC.swift in Sources */,
+				FF3A2B08288051E400D6E8EA /* GameViewController (EXT).swift in Sources */,
+				FFF46A8F28859B9D0003FAE2 /* GameOverChecker.swift in Sources */,
 				FF668739287C3C490035527B /* GameViewController.swift in Sources */,
 				FF3A2B1728819E2C00D6E8EA /* GameOverViewController.swift in Sources */,
 				FF668731287C3C490035527B /* AppDelegate.swift in Sources */,

@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-            
+
             view.showsFPS = true
             view.showsNodeCount = true
         }
@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
 
     @IBAction func pauseButtonPressed(_ sender: UIButton) {
         gameScene.pauseTheGame()
-        showPauseScreen(pauseViewController)
+        showScreen(pauseViewController)
     }
 
     func hidePauseScreen(_ viewController: UIViewController) {
@@ -61,7 +61,7 @@ class GameViewController: UIViewController {
         }
         )}
 
-    private func showPauseScreen(_ viewController: UIViewController) {
+    func showScreen(_ viewController: UIViewController) {
         addChild(viewController)
         view.addSubview(viewController.view)
         viewController.view.frame = view.bounds

@@ -38,5 +38,5 @@ extension GameScene {
         let time = distance / speed
         return TimeInterval(time)
     }
-    
+
 }

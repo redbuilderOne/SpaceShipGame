@@ -13,9 +13,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let spaceShipCategory: UInt32 = 0x1 << 0 // битовая маска 0
     let asteroidCategory: UInt32 = 0x1 << 1 // битовая маска 1
+    let gameViewController = GameViewController()
+    let gameOverViewController = GameOverViewController()
 
     var actions: Actions!
 
+    //    var asteroid: Asteroid = Asteroid()
     var asteroid: Asteroid = Asteroid()
     var score = 0
     var life = 3
@@ -224,13 +227,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case 0:
             spriteNodes.heartLife3.isHidden = true
         default:
-            print("game over")
+            GameOverChecker.shared.gameOver = true
+            print("Game over? \(GameOverChecker.shared.gameOver)")
+//
+//            if GameOverChecker.shared.gameOver {
+//                gameViewController.showScreen(gameOverViewController)
+//            }
         }
 
         if musicSoundPlayer.soundOn {
             run(actions.hitSoundAction1)
         }
     }
+
 
     func didEnd(_ contact: SKPhysicsContact) {
         print("contact didEnd")
