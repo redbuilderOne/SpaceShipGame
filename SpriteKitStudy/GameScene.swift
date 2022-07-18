@@ -31,9 +31,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var musicSoundPlayer: MusicSoundPlayer!
 
-//    var musicPlayer: AVAudioPlayer!
-//    var musicOn = true
-//    var soundOn = true
+    //    var musicPlayer: AVAudioPlayer!
+    //    var musicOn = true
+    //    var soundOn = true
 
     var spaceShipModel: SKSpriteNode = {
         var spaceShip = SKSpriteNode()
@@ -249,8 +249,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
+    private func explosion(position: CGPoint) {
+        guard let explosion = SKEmitterNode.init(fileNamed: "ShapeExplodes") else { return }
+
+        explosion.position = position
+
+        let explodeAction = SKAction.run({
+            self.addChild(explosion)
+        })
+
+        let wait = SKAction.wait(forDuration: 0.2)
+
+        let removeExplodeAction = SKAction.run({
+            explosion.removeFromParent()
+        })
+        let explodeSequence = SKAction.sequence([explodeAction, wait, removeExplodeAction])
+
+        self.run(explodeSequence)
+
+    }
+
     func didBegin(_ contact: SKPhysicsContact) {
         print("contact didBegin")
+
+        let contactLocation = contact.contactPoint
+        explosion(position: contactLocation)
+
+
+        print("contact \(contact)")
 
         self.score -= 1
         self.life -= 1
@@ -281,10 +307,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func didEnd(_ contact: SKPhysicsContact) {
         print("contact didEnd")
-
-        //        let explosion = SKEmitterNode(fileNamed: "Explosion")
-        //        explosion?.position =
-        // https://www.youtube.com/watch?v=zyly5HhA6ao
 
         if musicSoundPlayer.soundOn {
             run(actions.beepSoundAction1)

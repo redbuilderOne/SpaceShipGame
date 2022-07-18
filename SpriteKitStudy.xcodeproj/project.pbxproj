@@ -15,7 +15,6 @@
 		FF3A2B1328805D7C00D6E8EA /* Impact1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FF3A2B1228805D7C00D6E8EA /* Impact1.wav */; };
 		FF3A2B1528805ED200D6E8EA /* MainTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF3A2B1428805ED200D6E8EA /* MainTheme.mp3 */; };
 		FF3A2B1728819E2C00D6E8EA /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A2B1628819E2C00D6E8EA /* GameOverViewController.swift */; };
-		FF3A2B192881A97A00D6E8EA /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF3A2B182881A97A00D6E8EA /* Explosion.sks */; };
 		FF3A2B1B2881B68500D6E8EA /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A2B1A2881B68500D6E8EA /* Actions.swift */; };
 		FF3A2B1F2881B8B600D6E8EA /* MusicSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A2B1E2881B8B600D6E8EA /* MusicSoundPlayer.swift */; };
 		FF668731287C3C490035527B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF668730287C3C490035527B /* AppDelegate.swift */; };
@@ -29,6 +28,8 @@
 		FF66874D287C5CA20035527B /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66874C287C5CA20035527B /* Asteroid.swift */; };
 		FF66874F287C5E520035527B /* ScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66874E287C5E520035527B /* ScoreLabel.swift */; };
 		FF668753287EF7D70035527B /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF668752287EF7D70035527B /* Stars.sks */; };
+		FFF46A88288587CA0003FAE2 /* ShapeExplodes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFF46A86288587CA0003FAE2 /* ShapeExplodes.sks */; };
+		FFF46A89288587CA0003FAE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF46A87288587CA0003FAE2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,6 @@
 		FF3A2B1228805D7C00D6E8EA /* Impact1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Impact1.wav; sourceTree = "<group>"; };
 		FF3A2B1428805ED200D6E8EA /* MainTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MainTheme.mp3; sourceTree = "<group>"; };
 		FF3A2B1628819E2C00D6E8EA /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
-		FF3A2B182881A97A00D6E8EA /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		FF3A2B1A2881B68500D6E8EA /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		FF3A2B1E2881B8B600D6E8EA /* MusicSoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSoundPlayer.swift; sourceTree = "<group>"; };
 		FF66872D287C3C490035527B /* SpriteKitStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +55,8 @@
 		FF66874C287C5CA20035527B /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		FF66874E287C5E520035527B /* ScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLabel.swift; sourceTree = "<group>"; };
 		FF668752287EF7D70035527B /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
+		FFF46A86288587CA0003FAE2 /* ShapeExplodes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShapeExplodes.sks; sourceTree = "<group>"; };
+		FFF46A87288587CA0003FAE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				FF3A2B032880467900D6E8EA /* Fire.sks */,
+				FFF46A86288587CA0003FAE2 /* ShapeExplodes.sks */,
 				FF668752287EF7D70035527B /* Stars.sks */,
+				FFF46A87288587CA0003FAE2 /* Assets.xcassets */,
 			);
 			path = EmitterNodes;
 			sourceTree = "<group>";
@@ -118,14 +122,10 @@
 		FF66872F287C3C490035527B /* SpriteKitStudy */ = {
 			isa = PBXGroup;
 			children = (
-				FF668730287C3C490035527B /* AppDelegate.swift */,
-				FF668736287C3C490035527B /* GameScene.swift */,
-				FF3A2B182881A97A00D6E8EA /* Explosion.sks */,
-				FF668732287C3C490035527B /* GameScene.sks */,
-				FF668734287C3C490035527B /* Actions.sks */,
 				FF66873A287C3C490035527B /* Main.storyboard */,
-				FF66873F287C3C4B0035527B /* LaunchScreen.storyboard */,
+				FF668736287C3C490035527B /* GameScene.swift */,
 				FF66873D287C3C4B0035527B /* Assets.xcassets */,
+				FFF46A85288587590003FAE2 /* App */,
 				FF3A2B0F28805A8400D6E8EA /* Controller */,
 				FF3A2B0E28805A6C00D6E8EA /* EmitterNodes */,
 				FF66874B287C5A4D0035527B /* Model */,
@@ -143,6 +143,17 @@
 				FF3A2B1E2881B8B600D6E8EA /* MusicSoundPlayer.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FFF46A85288587590003FAE2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FF668730287C3C490035527B /* AppDelegate.swift */,
+				FF668734287C3C490035527B /* Actions.sks */,
+				FF668732287C3C490035527B /* GameScene.sks */,
+				FF66873F287C3C4B0035527B /* LaunchScreen.storyboard */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,10 +220,11 @@
 				FF3A2B1128805B2F00D6E8EA /* Beeps1.wav in Resources */,
 				FF668733287C3C490035527B /* GameScene.sks in Resources */,
 				FF66873E287C3C4B0035527B /* Assets.xcassets in Resources */,
+				FFF46A89288587CA0003FAE2 /* Assets.xcassets in Resources */,
 				FF3A2B1528805ED200D6E8EA /* MainTheme.mp3 in Resources */,
 				FF668741287C3C4B0035527B /* LaunchScreen.storyboard in Resources */,
 				FF668735287C3C490035527B /* Actions.sks in Resources */,
-				FF3A2B192881A97A00D6E8EA /* Explosion.sks in Resources */,
+				FFF46A88288587CA0003FAE2 /* ShapeExplodes.sks in Resources */,
 				FF668753287EF7D70035527B /* Stars.sks in Resources */,
 				FF3A2B0B28805A3200D6E8EA /* Impact2.wav in Resources */,
 			);
